@@ -1,5 +1,6 @@
 import { Card } from "@/components/ui/card";
 import { roadmap, type PhaseStatus } from "@/modules/plan/roadmap";
+import { financePlan, financeArchitecture } from "@/modules/plan/finance-plan";
 
 const phaseBadgeClasses: Record<PhaseStatus, string> = {
   done: "bg-teal-50 text-teal-700 dark:bg-teal-950 dark:text-teal-300",
@@ -63,6 +64,36 @@ export default function PlanPage() {
           </ul>
         </Card>
       ))}
+
+      <h2 className="mt-2 text-lg font-semibold">Finance — detailed plan</h2>
+
+      {financePlan.map((section) => (
+        <Card key={section.id} title={section.name}>
+          <p className="mb-4 text-sm text-zinc-600 dark:text-zinc-300">
+            {section.blurb}
+          </p>
+
+          <ul className="space-y-3">
+            {section.items.map((item) => (
+              <li key={item.title}>
+                <div className="text-sm font-medium">{item.title}</div>
+                <div className="text-xs text-zinc-400">{item.detail}</div>
+              </li>
+            ))}
+          </ul>
+        </Card>
+      ))}
+
+      <Card title="How the data flows">
+        <ul className="space-y-3">
+          {financeArchitecture.map((item) => (
+            <li key={item.title}>
+              <div className="text-sm font-medium">{item.title}</div>
+              <div className="text-xs text-zinc-400">{item.detail}</div>
+            </li>
+          ))}
+        </ul>
+      </Card>
     </div>
   );
 }

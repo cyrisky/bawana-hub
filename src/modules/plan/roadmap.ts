@@ -61,13 +61,49 @@ export const roadmap: RoadmapPhase[] = [
     timeframe: "Sep 2026",
     status: "in-progress",
     summary:
-      "Make finance + gym good enough to replace spreadsheets and notes, used every day.",
+      "Finance first: harvest BawanaPocket's assets, then realtime + statement ingestion.",
     items: [
       {
-        title: "Seed real data",
-        detail: "Real accounts, categories, current gym plan",
+        title: "BawanaPocket harvest",
+        detail: "Port the BCA parser and categorization rules",
         status: "planned",
       },
+      {
+        title: "Finance schema v2",
+        detail:
+          "finance_rules table; source, external_id, transfer_group_id columns; paylater type; bill due dates",
+        status: "planned",
+      },
+      {
+        title: "E-statement import",
+        detail: "Upload → parse → preview → confirm, idempotent",
+        status: "planned",
+      },
+      {
+        title: "Gmail realtime expenses",
+        detail: "Poll payment-notification emails into transactions",
+        status: "planned",
+      },
+      {
+        title: "Reconciliation",
+        detail: "Statement merges with gmail rows; no duplicates",
+        status: "planned",
+      },
+      {
+        title: "Real account seed",
+        detail: "13 accounts, Rukita rent, salary, PayPal USD income",
+        status: "planned",
+      },
+    ],
+  },
+  {
+    id: "phase-2",
+    name: "More of life",
+    timeframe: "Q4 2026",
+    status: "planned",
+    summary:
+      "Finance polish, gym progress views, then new life domains.",
+    items: [
       {
         title: "Budgets UI",
         detail:
@@ -89,15 +125,6 @@ export const roadmap: RoadmapPhase[] = [
         detail: "Edit the open-ended jsonb attributes from the UI",
         status: "planned",
       },
-    ],
-  },
-  {
-    id: "phase-2",
-    name: "More of life",
-    timeframe: "Q4 2026",
-    status: "planned",
-    summary: "New life domains join the hub, one module each.",
-    items: [
       {
         title: "Work module",
         detail: "Projects, tasks, and time across Satu Persen / Nex / Exo",
