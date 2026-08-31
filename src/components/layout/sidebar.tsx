@@ -8,6 +8,7 @@ const nav = [
   { href: "/finance", label: "Finance", icon: "$" },
   { href: "/gym", label: "Gym", icon: "⚡" },
   { href: "/profile", label: "Profile", icon: "●" },
+  { href: "/plan", label: "Plan", icon: "▸" },
 ];
 
 export function Sidebar({ email }: { email: string }) {
