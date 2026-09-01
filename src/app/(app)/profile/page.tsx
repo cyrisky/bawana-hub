@@ -30,16 +30,16 @@ export default async function ProfilePage() {
         {profile ? (
           <ProfileForm profile={profile as Profile} />
         ) : (
-          <p className="text-sm text-zinc-500">Profile not found.</p>
+          <p className="text-sm text-ink-muted">Profile not found.</p>
         )}
       </Card>
 
       <Card title="Body metrics">
         {(metrics ?? []).length > 0 && (
-          <ul className="mb-4 divide-y divide-zinc-100 text-sm dark:divide-zinc-800">
+          <ul className="mb-4 divide-y divide-edge text-sm">
             {(metrics ?? []).map((m) => (
               <li key={m.id} className="flex justify-between py-1.5">
-                <span className="text-zinc-500">{formatDate(m.recorded_at)}</span>
+                <span className="text-ink-muted">{formatDate(m.recorded_at)}</span>
                 <span>
                   {m.metric.replace(/_/g, " ")}:{" "}
                   <span className="font-medium tabular-nums">{m.value}</span>

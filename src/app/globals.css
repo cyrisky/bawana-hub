@@ -1,26 +1,34 @@
 @import "tailwindcss";
 
+/* Bawana color foundation v0.1 — Systems branch ("Quiet Current"), light mode only.
+   See docs/design/bawana-color-foundation-v0.1.md and
+   docs/design/semantic-tokens-v0.1.md for the primitive → semantic mapping. */
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --ground: #e9eef0;
+  --surface: #ffffff;
+  --ink: #172126;
+  --ink-muted: #4d5a60;
+  --edge: rgba(23, 33, 38, 0.12);
+  --signal: #b63d81;
+  --refraction: #d0b24b;
+  --trace: #b8d4d1;
 }
 
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
+  --color-ground: var(--ground);
+  --color-surface: var(--surface);
+  --color-ink: var(--ink);
+  --color-ink-muted: var(--ink-muted);
+  --color-edge: var(--edge);
+  --color-signal: var(--signal);
+  --color-refraction: var(--refraction);
+  --color-trace: var(--trace);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
-}
-
 body {
-  background: var(--background);
-  color: var(--foreground);
+  background: var(--ground);
+  color: var(--ink);
   font-family: Arial, Helvetica, sans-serif;
 }

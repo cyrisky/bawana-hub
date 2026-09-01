@@ -36,11 +36,11 @@ export default function LoginPage() {
     <main className="flex min-h-screen items-center justify-center p-4">
       <form
         onSubmit={submit}
-        className="w-full max-w-sm space-y-4 rounded-xl border border-zinc-200 bg-white p-6 shadow-sm dark:border-zinc-800 dark:bg-zinc-900"
+        className="w-full max-w-sm space-y-4 rounded-xl border border-edge bg-surface p-6 shadow-sm"
       >
         <div>
           <h1 className="text-lg font-semibold">Bawana Hub</h1>
-          <p className="text-sm text-zinc-500 dark:text-zinc-400">
+          <p className="text-sm text-ink-muted">
             {mode === "signin" ? "Sign in to your hub" : "Create your account"}
           </p>
         </div>
@@ -62,16 +62,14 @@ export default function LoginPage() {
             minLength={6}
           />
         </Field>
-        {error && (
-          <p className="text-sm text-red-600 dark:text-red-400">{error}</p>
-        )}
+        {error && <p className="text-sm font-medium text-ink">{error}</p>}
         <Button type="submit" disabled={busy} className="w-full">
           {busy ? "…" : mode === "signin" ? "Sign in" : "Sign up"}
         </Button>
         <button
           type="button"
           onClick={() => setMode(mode === "signin" ? "signup" : "signin")}
-          className="w-full text-center text-sm text-zinc-500 hover:text-zinc-700 dark:text-zinc-400 dark:hover:text-zinc-200"
+          className="w-full text-center text-sm text-ink-muted hover:text-ink"
         >
           {mode === "signin"
             ? "First time? Create an account"

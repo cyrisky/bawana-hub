@@ -83,7 +83,7 @@ export function TransactionForm({
           Add transaction
         </Button>
         {accounts.length === 0 && (
-          <span className="ml-3 text-sm text-zinc-500">
+          <span className="ml-3 text-sm text-ink-muted">
             Add an account first.
           </span>
         )}

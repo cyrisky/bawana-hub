@@ -23,12 +23,12 @@ export function SessionLogger({
   return (
     <div className="space-y-4">
       {sets.length > 0 && (
-        <ul className="divide-y divide-zinc-100 text-sm dark:divide-zinc-800">
+        <ul className="divide-y divide-edge text-sm">
           {sets.map((s) => (
             <li key={s.id} className="flex justify-between py-1.5">
               <span>
                 {exerciseName(s.exercise_id)}
-                <span className="ml-2 text-xs text-zinc-500">
+                <span className="ml-2 text-xs text-ink-muted">
                   set {s.set_number}
                 </span>
               </span>

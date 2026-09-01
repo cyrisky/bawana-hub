@@ -24,7 +24,7 @@ export default async function SessionPage({
         <h1 className="text-2xl font-semibold">Workout</h1>
         <Link
           href="/gym"
-          className="text-sm text-zinc-500 hover:text-zinc-700 dark:hover:text-zinc-300"
+          className="text-sm text-ink-muted hover:text-ink"
         >
           ← Back to gym
         </Link>

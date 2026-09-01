@@ -46,12 +46,12 @@ export default async function FinancePage() {
 
       <Card title="Accounts">
         {summary.accounts.length > 0 && (
-          <ul className="mb-4 divide-y divide-zinc-100 dark:divide-zinc-800">
+          <ul className="mb-4 divide-y divide-edge">
             {summary.accounts.map((a) => (
               <li key={a.id} className="flex justify-between py-2 text-sm">
                 <span>
                   {a.name}
-                  <span className="ml-2 text-xs text-zinc-400">{a.type}</span>
+                  <span className="ml-2 text-xs text-ink-muted">{a.type}</span>
                 </span>
                 <span className="font-medium tabular-nums">
                   {formatIDR(summary.balances.get(a.id) ?? 0)}
@@ -71,8 +71,8 @@ export default async function FinancePage() {
                 key={c.id}
                 className={`rounded-full px-2.5 py-0.5 text-xs font-medium ${
                   c.kind === "income"
-                    ? "bg-teal-50 text-teal-700 dark:bg-teal-950 dark:text-teal-300"
-                    : "bg-zinc-100 text-zinc-600 dark:bg-zinc-800 dark:text-zinc-300"
+                    ? "bg-trace text-ink"
+                    : "bg-edge text-ink-muted"
                 }`}
               >
                 {c.name}

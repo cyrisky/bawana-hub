@@ -25,9 +25,7 @@ export function TransactionList({
 
   if (transactions.length === 0) {
     return (
-      <p className="text-sm text-zinc-500 dark:text-zinc-400">
-        No transactions yet.
-      </p>
+      <p className="text-sm text-ink-muted">No transactions yet.</p>
     );
   }
 
@@ -36,11 +34,8 @@ export function TransactionList({
       <table className="w-full text-sm">
         <tbody>
           {transactions.map((t) => (
-            <tr
-              key={t.id}
-              className="border-b border-zinc-100 last:border-0 dark:border-zinc-800"
-            >
-              <td className="py-2 pr-3 whitespace-nowrap text-zinc-500 dark:text-zinc-400">
+            <tr key={t.id} className="border-b border-edge last:border-0">
+              <td className="py-2 pr-3 whitespace-nowrap text-ink-muted">
                 {formatDate(t.occurred_at)}
               </td>
               <td className="py-2 pr-3">
@@ -50,7 +45,7 @@ export function TransactionList({
                     : (categoryName(t.category_id) ??
                       (t.kind === "income" ? "Income" : "Expense"))}
                 </div>
-                <div className="text-xs text-zinc-500 dark:text-zinc-400">
+                <div className="text-xs text-ink-muted">
                   {t.kind !== "transfer" && accountName(t.account_id)}
                   {t.note ? ` · ${t.note}` : ""}
                 </div>
@@ -58,10 +53,10 @@ export function TransactionList({
               <td
                 className={`py-2 pr-3 text-right font-medium tabular-nums whitespace-nowrap ${
                   t.kind === "income"
-                    ? "text-teal-600 dark:text-teal-400"
+                    ? "text-signal"
                     : t.kind === "expense"
-                      ? "text-red-600 dark:text-red-400"
-                      : "text-zinc-500"
+                      ? "text-ink"
+                      : "text-ink-muted"
                 }`}
               >
                 {t.kind === "expense" ? "−" : t.kind === "income" ? "+" : ""}

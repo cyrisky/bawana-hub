@@ -30,11 +30,11 @@ export default async function GymPage() {
 
       <Card title="Exercise library">
         {exercises.length > 0 && (
-          <ul className="mb-4 divide-y divide-zinc-100 text-sm dark:divide-zinc-800">
+          <ul className="mb-4 divide-y divide-edge text-sm">
             {exercises.map((e) => (
               <li key={e.id} className="flex justify-between py-1.5">
                 <span>{e.name}</span>
-                <span className="text-xs text-zinc-500">
+                <span className="text-xs text-ink-muted">
                   {[e.muscle_group, e.equipment].filter(Boolean).join(" · ")}
                 </span>
               </li>
@@ -52,19 +52,17 @@ export default async function GymPage() {
 
       <Card title="Recent sessions">
         {sessions.length === 0 ? (
-          <p className="text-sm text-zinc-500 dark:text-zinc-400">
-            No workouts logged yet.
-          </p>
+          <p className="text-sm text-ink-muted">No workouts logged yet.</p>
         ) : (
-          <ul className="divide-y divide-zinc-100 text-sm dark:divide-zinc-800">
+          <ul className="divide-y divide-edge text-sm">
             {sessions.map((s) => (
               <li key={s.id}>
                 <Link
                   href={`/gym/session/${s.id}`}
-                  className="flex justify-between py-2 hover:text-teal-600 dark:hover:text-teal-400"
+                  className="flex justify-between py-2 hover:text-signal"
                 >
                   <span>{formatDateTime(s.started_at)}</span>
-                  <span className="text-xs text-zinc-500">
+                  <span className="text-xs text-ink-muted">
                     {s.ended_at ? "finished" : "in progress"}
                   </span>
                 </Link>

@@ -13,12 +13,12 @@ export function Card({
 }) {
   return (
     <section
-      className={`rounded-xl border border-zinc-200 bg-white p-5 shadow-sm dark:border-zinc-800 dark:bg-zinc-900 ${className}`}
+      className={`rounded-xl border border-edge bg-surface p-5 shadow-sm ${className}`}
     >
       {(title || action) && (
         <header className="mb-4 flex items-center justify-between gap-2">
           {title && (
-            <h2 className="text-sm font-semibold uppercase tracking-wide text-zinc-500 dark:text-zinc-400">
+            <h2 className="text-sm font-semibold uppercase tracking-wide text-ink-muted">
               {title}
             </h2>
           )}

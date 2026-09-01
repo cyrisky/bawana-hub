@@ -61,7 +61,7 @@ export default async function DashboardPage() {
         </Card>
       </div>
 
-      <p className="text-sm text-zinc-500 dark:text-zinc-400">
+      <p className="text-sm text-ink-muted">
         More life modules (work, personal, …) plug in here as they land.
       </p>
     </div>
@@ -72,7 +72,7 @@ function ModuleLink({ href }: { href: string }) {
   return (
     <Link
       href={href}
-      className="text-xs font-medium text-teal-600 hover:text-teal-700 dark:text-teal-400"
+      className="text-xs font-medium text-ink-muted hover:text-signal"
     >
       Open →
     </Link>

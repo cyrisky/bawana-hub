@@ -3,10 +3,9 @@ import { roadmap, type PhaseStatus } from "@/modules/plan/roadmap";
 import { financePlan, financeArchitecture } from "@/modules/plan/finance-plan";
 
 const phaseBadgeClasses: Record<PhaseStatus, string> = {
-  done: "bg-teal-50 text-teal-700 dark:bg-teal-950 dark:text-teal-300",
-  "in-progress":
-    "bg-amber-50 text-amber-700 dark:bg-amber-950 dark:text-amber-300",
-  planned: "bg-zinc-100 text-zinc-600 dark:bg-zinc-800 dark:text-zinc-300",
+  done: "bg-trace text-ink",
+  "in-progress": "bg-refraction text-ink",
+  planned: "bg-edge text-ink-muted",
 };
 
 const phaseBadgeLabel: Record<PhaseStatus, string> = {
@@ -16,9 +15,9 @@ const phaseBadgeLabel: Record<PhaseStatus, string> = {
 };
 
 const itemDotClasses: Record<PhaseStatus, string> = {
-  done: "bg-teal-500 dark:bg-teal-400",
-  "in-progress": "bg-amber-500 dark:bg-amber-400",
-  planned: "bg-zinc-300 dark:bg-zinc-600",
+  done: "bg-trace",
+  "in-progress": "bg-refraction",
+  planned: "bg-edge",
 };
 
 export default function PlanPage() {
@@ -38,13 +37,11 @@ export default function PlanPage() {
               {phaseBadgeLabel[phase.status]}
             </span>
             {phase.timeframe && (
-              <span className="text-xs text-zinc-400">{phase.timeframe}</span>
+              <span className="text-xs text-ink-muted">{phase.timeframe}</span>
             )}
           </div>
 
-          <p className="mb-4 text-sm text-zinc-600 dark:text-zinc-300">
-            {phase.summary}
-          </p>
+          <p className="mb-4 text-sm text-ink-muted">{phase.summary}</p>
 
           <ul className="space-y-3">
             {phase.items.map((item) => (
@@ -56,7 +53,7 @@ export default function PlanPage() {
                 <div>
                   <div className="text-sm font-medium">{item.title}</div>
                   {item.detail && (
-                    <div className="text-xs text-zinc-400">{item.detail}</div>
+                    <div className="text-xs text-ink-muted">{item.detail}</div>
                   )}
                 </div>
               </li>
@@ -69,15 +66,13 @@ export default function PlanPage() {
 
       {financePlan.map((section) => (
         <Card key={section.id} title={section.name}>
-          <p className="mb-4 text-sm text-zinc-600 dark:text-zinc-300">
-            {section.blurb}
-          </p>
+          <p className="mb-4 text-sm text-ink-muted">{section.blurb}</p>
 
           <ul className="space-y-3">
             {section.items.map((item) => (
               <li key={item.title}>
                 <div className="text-sm font-medium">{item.title}</div>
-                <div className="text-xs text-zinc-400">{item.detail}</div>
+                <div className="text-xs text-ink-muted">{item.detail}</div>
               </li>
             ))}
           </ul>
@@ -89,7 +84,7 @@ export default function PlanPage() {
           {financeArchitecture.map((item) => (
             <li key={item.title}>
               <div className="text-sm font-medium">{item.title}</div>
-              <div className="text-xs text-zinc-400">{item.detail}</div>
+              <div className="text-xs text-ink-muted">{item.detail}</div>
             </li>
           ))}
         </ul>
