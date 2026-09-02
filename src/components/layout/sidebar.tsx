@@ -9,6 +9,7 @@ const nav = [
   { href: "/gym", label: "Gym", icon: "⚡" },
   { href: "/profile", label: "Profile", icon: "●" },
   { href: "/plan", label: "Plan", icon: "▸" },
+  { href: "/qa", label: "QA", icon: "✓" },
 ];
 
 export function Sidebar({ email }: { email: string }) {
