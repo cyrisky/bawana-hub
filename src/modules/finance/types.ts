@@ -4,6 +4,7 @@ export type AccountType =
   | "ewallet"
   | "credit_card"
   | "investment"
+  | "paylater"
   | "other";
 
 export type TxnKind = "income" | "expense" | "transfer";

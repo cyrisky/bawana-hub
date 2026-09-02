@@ -12,6 +12,7 @@ import {
   CategoryForm,
 } from "@/modules/finance/components/account-form";
 import { TransactionList } from "@/modules/finance/components/transaction-list";
+import { SeedFinanceButton } from "@/modules/finance/components/seed-button";
 
 export default async function FinancePage() {
   const [summary, categories, transactions] = await Promise.all([
@@ -45,7 +46,7 @@ export default async function FinancePage() {
       </Card>
 
       <Card title="Accounts">
-        {summary.accounts.length > 0 && (
+        {summary.accounts.length > 0 ? (
           <ul className="mb-4 divide-y divide-edge">
             {summary.accounts.map((a) => (
               <li key={a.id} className="flex justify-between py-2 text-sm">
@@ -59,6 +60,11 @@ export default async function FinancePage() {
               </li>
             ))}
           </ul>
+        ) : (
+          <div className="mb-4 flex flex-wrap items-center justify-between gap-3 rounded-lg border border-dashed border-edge p-4 text-sm text-ink-muted">
+            <span>No accounts yet.</span>
+            <SeedFinanceButton />
+          </div>
         )}
         <AccountForm />
       </Card>

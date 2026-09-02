@@ -2,6 +2,11 @@
 
 import { revalidatePath } from "next/cache";
 import { createClient } from "@/lib/supabase/server";
+import {
+  DEFAULT_ACCOUNTS,
+  DEFAULT_CATEGORIES,
+  DEFAULT_RULES,
+} from "./seed";
 
 async function userId() {
   const supabase = await createClient();
@@ -69,4 +74,68 @@ export async function deleteTransaction(id: string) {
   if (error) throw new Error(error.message);
   revalidatePath("/finance");
   revalidatePath("/");
+}
+
+/**
+ * Seed a fresh account with the default categories, accounts, and
+ * categorization rules. Idempotent: each table is only populated if it is
+ * currently empty for this user, so re-running (or racing) is safe.
+ */
+export async function seedFinanceDefaults() {
+  const { supabase, uid } = await userId();
+
+  const [{ count: categoryCount }, { count: accountCount }, { count: ruleCount }] =
+    await Promise.all([
+      supabase
+        .from("finance_categories")
+        .select("id", { count: "exact", head: true })
+        .eq("user_id", uid),
+      supabase
+        .from("finance_accounts")
+        .select("id", { count: "exact", head: true })
+        .eq("user_id", uid),
+      supabase
+        .from("finance_rules")
+        .select("id", { count: "exact", head: true })
+        .eq("user_id", uid),
+    ]);
+
+  if (!categoryCount) {
+    const { error } = await supabase.from("finance_categories").insert(
+      DEFAULT_CATEGORIES.map((c) => ({
+        user_id: uid,
+        name: c.name,
+        kind: c.kind,
+      }))
+    );
+    if (error) throw new Error(error.message);
+  }
+
+  if (!accountCount) {
+    const { error } = await supabase.from("finance_accounts").insert(
+      DEFAULT_ACCOUNTS.map((a) => ({
+        user_id: uid,
+        name: a.name,
+        type: a.type,
+        opening_balance: 0,
+      }))
+    );
+    if (error) throw new Error(error.message);
+  }
+
+  if (!ruleCount) {
+    const { error } = await supabase.from("finance_rules").insert(
+      DEFAULT_RULES.map((r) => ({
+        user_id: uid,
+        pattern: r.pattern,
+        applies_to: r.applies_to,
+        category_name: r.category_name,
+        priority: r.priority,
+        origin: "seed",
+      }))
+    );
+    if (error) throw new Error(error.message);
+  }
+
+  revalidatePath("/finance");
 }
