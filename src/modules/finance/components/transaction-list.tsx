@@ -48,6 +48,11 @@ export function TransactionList({
                 <div className="text-xs text-ink-muted">
                   {t.kind !== "transfer" && accountName(t.account_id)}
                   {t.note ? ` · ${t.note}` : ""}
+                  {t.source !== "manual" && (
+                    <span className="ml-2 text-xs text-ink-muted">
+                      {t.source}
+                    </span>
+                  )}
                 </div>
               </td>
               <td

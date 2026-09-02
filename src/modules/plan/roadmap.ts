@@ -66,18 +66,18 @@ export const roadmap: RoadmapPhase[] = [
       {
         title: "BawanaPocket harvest",
         detail: "Port the BCA parser and categorization rules",
-        status: "planned",
+        status: "done",
       },
       {
         title: "Finance schema v2",
         detail:
           "finance_rules table; source, external_id, transfer_group_id columns; paylater type; bill due dates",
-        status: "planned",
+        status: "done",
       },
       {
         title: "E-statement import",
         detail: "Upload → parse → preview → confirm, idempotent",
-        status: "planned",
+        status: "done",
       },
       {
         title: "Gmail realtime expenses",

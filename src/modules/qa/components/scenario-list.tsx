@@ -32,11 +32,14 @@ export function ScenarioList({
 }) {
   const [passed, setPassed] = useState<Record<string, boolean>>({});
 
+  // localStorage is only readable on the client; hydrating checkbox state in an
+  // effect (server renders unchecked) is the SSR-safe pattern here.
   useEffect(() => {
     const next: Record<string, boolean> = {};
     for (const scenario of scenarios) {
       next[scenario.id] = readPassed(roundId, scenario.id);
     }
+    // eslint-disable-next-line react-hooks/set-state-in-effect
     setPassed(next);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [roundId, scenarios.map((s) => s.id).join(",")]);

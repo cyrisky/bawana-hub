@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { Card } from "@/components/ui/card";
 import { Stat } from "@/components/ui/stat";
 import { formatIDR } from "@/lib/format";
@@ -89,7 +90,17 @@ export default async function FinancePage() {
         <CategoryForm />
       </Card>
 
-      <Card title="Recent transactions">
+      <Card
+        title="Recent transactions"
+        action={
+          <Link
+            href="/finance/import"
+            className="rounded-lg border border-edge bg-surface px-3 py-1.5 text-sm font-medium text-ink transition-colors hover:bg-ground"
+          >
+            Import statement →
+          </Link>
+        }
+      >
         <TransactionList
           transactions={transactions}
           accounts={summary.accounts}

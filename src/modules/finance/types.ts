@@ -9,6 +9,8 @@ export type AccountType =
 
 export type TxnKind = "income" | "expense" | "transfer";
 
+export type TxnSource = "manual" | "gmail" | "statement";
+
 export interface FinanceAccount {
   id: string;
   name: string;
@@ -37,4 +39,5 @@ export interface FinanceTransaction {
   occurred_at: string;
   note: string | null;
   tags: string[];
+  source: TxnSource;
 }
