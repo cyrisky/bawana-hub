@@ -129,6 +129,65 @@ export const financePlan: FinancePlanSection[] = [
   },
 ];
 
+export interface FinanceFeature {
+  feature: string;
+  func: string;
+  phase: "now" | "later";
+}
+
+export const financeFeatures: FinanceFeature[] = [
+  {
+    feature: "Accounts & debts",
+    func: "All 13 accounts in one list. Credit cards + paylater count as debt with due dates. Net worth is honest.",
+    phase: "now",
+  },
+  {
+    feature: "E-statement import",
+    func: "Drop the BCA PDF → preview → confirm. Re-importing is always safe.",
+    phase: "now",
+  },
+  {
+    feature: "Auto-categorization",
+    func: "~60 merchant rules label each transaction the moment it lands.",
+    phase: "now",
+  },
+  {
+    feature: "Transfer pairing",
+    func: "Top-ups and repayments move money — they don't count as spending.",
+    phase: "now",
+  },
+  {
+    feature: "Gmail realtime",
+    func: "Payment email arrives → transaction appears in minutes. No typing.",
+    phase: "now",
+  },
+  {
+    feature: "Reconciliation",
+    func: "Monthly statement confirms the realtime rows. Duplicates die automatically.",
+    phase: "later",
+  },
+  {
+    feature: "Budgets",
+    func: "Set a monthly cap per category, watch the bar fill.",
+    phase: "later",
+  },
+  {
+    feature: "Month views",
+    func: "Pick a month, filter by account or category, see where money went.",
+    phase: "later",
+  },
+  {
+    feature: "AI backfill",
+    func: "AI labels whatever the rules missed.",
+    phase: "later",
+  },
+  {
+    feature: "Multi-currency",
+    func: "PayPal USD income shows up in IDR totals.",
+    phase: "later",
+  },
+];
+
 export const financeArchitecture: { title: string; detail: string }[] = [
   {
     title: "Three paths, one table",

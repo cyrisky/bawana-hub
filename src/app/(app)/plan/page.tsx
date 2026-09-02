@@ -1,6 +1,33 @@
 import { Card } from "@/components/ui/card";
 import { roadmap, type PhaseStatus } from "@/modules/plan/roadmap";
-import { financePlan, financeArchitecture } from "@/modules/plan/finance-plan";
+import {
+  financePlan,
+  financeArchitecture,
+  financeFeatures,
+  type FinanceFeature,
+} from "@/modules/plan/finance-plan";
+
+function FeatureTable({ rows }: { rows: FinanceFeature[] }) {
+  return (
+    <div className="overflow-x-auto">
+      <table className="w-full text-sm">
+        <tbody className="divide-y divide-edge">
+          {rows.map((row, index) => (
+            <tr key={row.feature}>
+              <td className="py-2 pr-3 text-ink-muted tabular-nums">
+                {index + 1}
+              </td>
+              <td className="py-2 pr-3 font-medium whitespace-nowrap">
+                {row.feature}
+              </td>
+              <td className="py-2 text-ink-muted">{row.func}</td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
+  );
+}
 
 const phaseBadgeClasses: Record<PhaseStatus, string> = {
   done: "bg-trace text-ink",
@@ -63,6 +90,27 @@ export default function PlanPage() {
       ))}
 
       <h2 className="mt-2 text-lg font-semibold">Finance — detailed plan</h2>
+
+      <Card title="Feature spec">
+        <div className="space-y-6">
+          <div>
+            <div className="mb-2 text-xs font-medium uppercase tracking-wide text-ink-muted">
+              Build now
+            </div>
+            <FeatureTable
+              rows={financeFeatures.filter((f) => f.phase === "now")}
+            />
+          </div>
+          <div>
+            <div className="mb-2 text-xs font-medium uppercase tracking-wide text-ink-muted">
+              After that
+            </div>
+            <FeatureTable
+              rows={financeFeatures.filter((f) => f.phase === "later")}
+            />
+          </div>
+        </div>
+      </Card>
 
       {financePlan.map((section) => (
         <Card key={section.id} title={section.name}>
