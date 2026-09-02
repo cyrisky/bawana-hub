@@ -132,7 +132,7 @@ export const financePlan: FinancePlanSection[] = [
 export interface FinanceFeature {
   feature: string;
   func: string;
-  phase: "now" | "later";
+  phase: "now" | "next" | "later-insight" | "later-capture";
 }
 
 export const financeFeatures: FinanceFeature[] = [
@@ -162,29 +162,79 @@ export const financeFeatures: FinanceFeature[] = [
     phase: "now",
   },
   {
+    feature: "3-state status",
+    func: "Every transaction is pending → cleared → reconciled. The data model lands in schema v2 so reconciliation has rails.",
+    phase: "next",
+  },
+  {
+    feature: "Due-date calendar",
+    func: "Every bill + installment due date in one view. List ⇄ calendar toggle.",
+    phase: "next",
+  },
+  {
+    feature: "Installment schedules",
+    func: "Each paylater is a real loan: tenor, installment amount, interest, payoff date.",
+    phase: "next",
+  },
+  {
+    feature: "Debt-free countdown",
+    func: "One total across all 7 credit lines, a payoff plan, and days-to-debt-free.",
+    phase: "next",
+  },
+  {
+    feature: "Safe-to-spend",
+    func: "Income − upcoming bills = one hero number on the dashboard.",
+    phase: "next",
+  },
+  {
     feature: "Reconciliation",
     func: "Monthly statement confirms the realtime rows. Duplicates die automatically.",
-    phase: "later",
+    phase: "later-insight",
   },
   {
     feature: "Budgets",
     func: "Set a monthly cap per category, watch the bar fill.",
-    phase: "later",
+    phase: "later-insight",
   },
   {
     feature: "Month views",
     func: "Pick a month, filter by account or category, see where money went.",
-    phase: "later",
+    phase: "later-insight",
   },
   {
-    feature: "AI backfill",
-    func: "AI labels whatever the rules missed.",
-    phase: "later",
+    feature: "Cash-flow forecast",
+    func: "Projects balances forward — catches shortfalls before a due date hits.",
+    phase: "later-insight",
   },
   {
-    feature: "Multi-currency",
-    func: "PayPal USD income shows up in IDR totals.",
-    phase: "later",
+    feature: "Net-worth trend",
+    func: "Assets vs liabilities over time, USD PayPal converted into IDR totals.",
+    phase: "later-insight",
+  },
+  {
+    feature: "Editable rules",
+    func: "Multi-condition rules with dry-run testing — outgrows the regex list.",
+    phase: "later-capture",
+  },
+  {
+    feature: "Recurring detection",
+    func: "Auto-flags subscriptions and repeating charges, nudges a review.",
+    phase: "later-capture",
+  },
+  {
+    feature: "AI assist",
+    func: "Labels what the rules miss and answers questions over your own data.",
+    phase: "later-capture",
+  },
+  {
+    feature: "Quick add",
+    func: "Log cash spending in seconds — covers what Gmail never sees.",
+    phase: "later-capture",
+  },
+  {
+    feature: "Daily review nudge",
+    func: "One fixed-time prompt: confirm today's transactions, done.",
+    phase: "later-capture",
   },
 ];
 

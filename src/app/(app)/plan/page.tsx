@@ -103,10 +103,26 @@ export default function PlanPage() {
           </div>
           <div>
             <div className="mb-2 text-xs font-medium uppercase tracking-wide text-ink-muted">
-              After that
+              Next up
             </div>
             <FeatureTable
-              rows={financeFeatures.filter((f) => f.phase === "later")}
+              rows={financeFeatures.filter((f) => f.phase === "next")}
+            />
+          </div>
+          <div>
+            <div className="mb-2 text-xs font-medium uppercase tracking-wide text-ink-muted">
+              Later — insight
+            </div>
+            <FeatureTable
+              rows={financeFeatures.filter((f) => f.phase === "later-insight")}
+            />
+          </div>
+          <div>
+            <div className="mb-2 text-xs font-medium uppercase tracking-wide text-ink-muted">
+              Later — capture & automation
+            </div>
+            <FeatureTable
+              rows={financeFeatures.filter((f) => f.phase === "later-capture")}
             />
           </div>
         </div>
